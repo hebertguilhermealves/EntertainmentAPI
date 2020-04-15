@@ -39,19 +39,19 @@ namespace External.Movie.Client.Services
                 if (response.IsSuccessStatusCode)
                 {
                     dataObjects = JsonConvert.DeserializeObject<MovieCertificationResponse>(response.Content.ReadAsStringAsync().Result);
-                    dataObjects.StatusCode = response.StatusCode;
-                    dataObjects.IsSuccessStatusCode = response.IsSuccessStatusCode;
+                    dataObjects.BaseResponse.StatusCode = response.StatusCode;
+                    dataObjects.BaseResponse.IsSuccessStatusCode = response.IsSuccessStatusCode;
                 }
                 else if (response.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    dataObjects.StatusCode = response.StatusCode;
-                    dataObjects.IsSuccessStatusCode = response.IsSuccessStatusCode;
+                    dataObjects.BaseResponse.StatusCode = response.StatusCode;
+                    dataObjects.BaseResponse.IsSuccessStatusCode = response.IsSuccessStatusCode;
 
                 }
                 else if (response.StatusCode == HttpStatusCode.BadRequest)
                 {
-                    dataObjects.StatusCode = response.StatusCode;
-                    dataObjects.IsSuccessStatusCode = response.IsSuccessStatusCode;
+                    dataObjects.BaseResponse.StatusCode = response.StatusCode;
+                    dataObjects.BaseResponse.IsSuccessStatusCode = response.IsSuccessStatusCode;
                 }
             }
 
@@ -70,19 +70,19 @@ namespace External.Movie.Client.Services
                 if (response.IsSuccessStatusCode)
                 {
                     dataObjects = JsonConvert.DeserializeObject<MovieCertificationResponse>(response.Content.ReadAsStringAsync().Result);
-                    dataObjects.StatusCode = response.StatusCode;
-                    dataObjects.IsSuccessStatusCode = response.IsSuccessStatusCode;
+                    dataObjects.BaseResponse.StatusCode = response.StatusCode;
+                    dataObjects.BaseResponse.IsSuccessStatusCode = response.IsSuccessStatusCode;
                 }
                 else if (response.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    dataObjects.StatusCode = response.StatusCode;
-                    dataObjects.IsSuccessStatusCode = response.IsSuccessStatusCode;
+                    dataObjects.BaseResponse.StatusCode = response.StatusCode;
+                    dataObjects.BaseResponse.IsSuccessStatusCode = response.IsSuccessStatusCode;
 
                 }
                 else if (response.StatusCode == HttpStatusCode.BadRequest)
                 {
-                    dataObjects.StatusCode = response.StatusCode;
-                    dataObjects.IsSuccessStatusCode = response.IsSuccessStatusCode;
+                    dataObjects.BaseResponse.StatusCode = response.StatusCode;
+                    dataObjects.BaseResponse.IsSuccessStatusCode = response.IsSuccessStatusCode;
                 }
             }
 

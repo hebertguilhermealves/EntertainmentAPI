@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using API.Models.Movie;
 using External.Movie.Client.Contracts;
+using External.Movie.Client.Responses.Base;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -15,8 +16,6 @@ namespace API.Controllers
     [ApiController]
     public class CertificationsController : ControllerBase
     {
-        public static string _Key;
-        public static string _URI;
         public CertificationsController(IConfiguration configuration, IMovieCertificationsServices certifications)
         {
             _configuration = configuration;
@@ -32,17 +31,17 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> Movie()
+        public async Task<ActionResult<BaseResponse>> Movie()
         {
             var content = await _certifications.GetMovieCertifications();
-
-            if (content.StatusCode == HttpStatusCode.Unauthorized)
+                
+            if (content.BaseResponse.StatusCode == HttpStatusCode.Unauthorized)
             {
-                return Unauthorized();
+                return Unauthorized(content.BaseResponse);
             }
-            else if (content.StatusCode == HttpStatusCode.BadRequest)
+            else if (content.BaseResponse.StatusCode == HttpStatusCode.BadRequest)
             {
-                return BadRequest();
+                return BadRequest(content.BaseResponse);
             }
             else
             {
@@ -55,17 +54,17 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> TV()
+        public async Task<ActionResult> TV()
         {
             var content = await _certifications.GetTVCertifications();
 
-            if (content.StatusCode == HttpStatusCode.Unauthorized)
+            if (content.BaseResponse.StatusCode == HttpStatusCode.Unauthorized)
             {
-                return Unauthorized();
+                return Unauthorized(content.BaseResponse);
             }
-            else if (content.StatusCode == HttpStatusCode.BadRequest)
+            else if (content.BaseResponse.StatusCode == HttpStatusCode.BadRequest)
             {
-                return BadRequest();
+                return BadRequest(content.BaseResponse);
             }
             else
             {

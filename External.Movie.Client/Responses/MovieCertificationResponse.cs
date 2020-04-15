@@ -6,16 +6,15 @@ using System.Text;
 
 namespace External.Movie.Client.Responses
 {
-    public class MovieCertificationResponse : BaseResponse
+    public class MovieCertificationResponse
     {
         public Certification Certifications { get; set; }
+        public BaseResponse BaseResponse { get; set; } = new BaseResponse();
 
-       
     }
 }
 public class Certification
 {
-    public string Certifications { get; set; }
     [JsonProperty("US")]
     public List<Item> US { get; set; }
     [JsonProperty("CA")]

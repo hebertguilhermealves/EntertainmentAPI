@@ -18,6 +18,7 @@ namespace API.Configurations
         {
             services.AddScoped<IMovieCertificationsServices, MovieCertificationsService>();
             services.AddScoped<IBaseClient, BaseClient>();
+            services.AddScoped<IMovieDiscoverServices, MovieDiscoverService>();
             return services;
         }
     }

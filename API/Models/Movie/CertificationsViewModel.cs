@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace API.Models.Movie
 {
-    public class CertificationsViewModel
+    public class ResponseMovieAPI
     {
+        public string StatusCode { get; set; }
+        public string Message { get; set; }
     }
 }
