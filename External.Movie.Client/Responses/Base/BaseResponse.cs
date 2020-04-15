@@ -11,5 +11,6 @@ namespace External.Movie.Client.Responses.Base
         public HttpStatusCode StatusCode { get; set; }
         public bool IsSuccessStatusCode { get; set; }
         public HttpResponseMessage Message { get; set; }
+       
     }
 }

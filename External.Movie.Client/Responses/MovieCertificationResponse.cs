@@ -8,201 +8,67 @@ namespace External.Movie.Client.Responses
 {
     public class MovieCertificationResponse : BaseResponse
     {
-        public MovieCertificationResponse Certifications { get; set; }
-        public List<US> US { get; set; }
-        public List<CA> CA { get; set; }
-        public List<AU> AU { get; set; }
-        public List<DE> DE { get; set; }
-        public List<FR> FR { get; set; }
-        public List<NZ> NZ { get; set; }
-        public List<IN> IN { get; set; }
-        public List<GB> GB { get; set; }
-        public List<NL> NL { get; set; }
-        public List<BR> BR { get; set; }
-        public List<FI> FI { get; set; }
-        public List<BG> BG { get; set; }
-        public List<ES> ES { get; set; }
-        public List<PT> PT { get; set; }
-        public List<MY> MY { get; set; }
-        [JsonProperty("CA-QC")]
-        public List<CAQC> CAQC { get; set; }
-        public List<SE> SE { get; set; }
-        public List<DK> DK { get; set; }
-        public List<NO> NO { get; set; }
-        public List<HU> HU { get; set; }
-        public List<LT> LT { get; set; }
-        public List<RU> RU { get; set; }
-        public List<PH> PH { get; set; }
-        public List<IT> IT { get; set; }
+        public Certification Certifications { get; set; }
+
+       
     }
 }
-public class US
+public class Certification
+{
+    public string Certifications { get; set; }
+    [JsonProperty("US")]
+    public List<Item> US { get; set; }
+    [JsonProperty("CA")]
+    public List<Item> CA { get; set; }
+    [JsonProperty("AU")]
+    public List<Item> AU { get; set; }
+    [JsonProperty("DE")]
+    public List<Item> DE { get; set; }
+    [JsonProperty("FR")]
+    public List<Item> FR { get; set; }
+    [JsonProperty("NZ")]
+    public List<Item> NZ { get; set; }
+    [JsonProperty("IN")]
+    public List<Item> IN { get; set; }
+    [JsonProperty("GB")]
+    public List<Item> GB { get; set; }
+    [JsonProperty("NL")]
+    public List<Item> NL { get; set; }
+    [JsonProperty("BR")]
+    public List<Item> BR { get; set; }
+    [JsonProperty("FI")]
+    public List<Item> FI { get; set; }
+    [JsonProperty("BG")]
+    public List<Item> BG { get; set; }
+    [JsonProperty("ES")]
+    public List<Item> ES { get; set; }
+    [JsonProperty("PT")]
+    public List<Item> PT { get; set; }
+    [JsonProperty("MY")]
+    public List<Item> MY { get; set; }
+    [JsonProperty("CA-QC")]
+    public List<Item> CAQC { get; set; }
+    [JsonProperty("SE")]
+    public List<Item> SE { get; set; }
+    [JsonProperty("DK")]
+    public List<Item> DK { get; set; }
+    [JsonProperty("NO")]
+    public List<Item> NO { get; set; }
+    [JsonProperty("HU")]
+    public List<Item> HU { get; set; }
+    [JsonProperty("LT")]
+    public List<Item> LT { get; set; }
+    [JsonProperty("RU")]
+    public List<Item> RU { get; set; }
+    [JsonProperty("PH")]
+    public List<Item> PH { get; set; }
+    [JsonProperty("IT")]
+    public List<Item> IT { get; set; }
+
+}
+public class Item
 {
     public string certification { get; set; }
     public string meaning { get; set; }
     public int order { get; set; }
 }
-
-public class CA
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class AU
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class DE
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class FR
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class NZ
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class IN
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class GB
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class NL
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class BR
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class FI
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class BG
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class ES
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class PT
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class MY
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-
-public class CAQC
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class SE
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class DK
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class NO
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class HU
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class LT
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class RU
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class PH
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-public class IT
-{
-    public string certification { get; set; }
-    public string meaning { get; set; }
-    public int order { get; set; }
-}
-
-

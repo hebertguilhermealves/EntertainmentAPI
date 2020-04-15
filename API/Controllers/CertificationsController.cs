@@ -21,8 +21,6 @@ namespace API.Controllers
         {
             _configuration = configuration;
             _certifications = certifications;
-            _Key = _configuration["MovieAPI:Key"];
-            _URI = _configuration["MovieAPI:URI"];
         }
 
         public IConfiguration _configuration { get; set; }
@@ -36,7 +34,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Movie()
         {
-            var content = await _certifications.GetMovieCertifications(_Key, _URI);
+            var content = await _certifications.GetMovieCertifications();
 
             if (content.StatusCode == HttpStatusCode.Unauthorized)
             {
@@ -48,7 +46,7 @@ namespace API.Controllers
             }
             else
             {
-                return Ok();
+                return Ok(content);
             }
         }
 
@@ -59,7 +57,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> TV()
         {
-            var content = await _certifications.GetTVCertifications(_Key, _URI);
+            var content = await _certifications.GetTVCertifications();
 
             if (content.StatusCode == HttpStatusCode.Unauthorized)
             {
@@ -71,7 +69,7 @@ namespace API.Controllers
             }
             else
             {
-                return Ok();
+                return Ok(content);
             }
         }
     }

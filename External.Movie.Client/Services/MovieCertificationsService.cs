@@ -1,6 +1,9 @@
 ﻿using External.Communications.Client;
 using External.Movie.Client.Contracts;
+using External.Movie.Client.Requests.BaseRequest;
 using External.Movie.Client.Responses;
+using External.Movie.Client.Services.Base;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,19 +15,22 @@ using System.Threading.Tasks;
 
 namespace External.Movie.Client.Services
 {
-    public class MovieCertificationsService : IMovieCertificationsServices
+    public class MovieCertificationsService : BaseService, IMovieCertificationsServices
     {
+       
         private readonly IBaseClient baseClient;
-        public MovieCertificationsService(IBaseClient _baseClient)
+        private readonly IConfiguration _configuration;
+        public MovieCertificationsService(IConfiguration configuration,
+                                           IBaseClient _baseClient) : base(configuration)
         {
-
             baseClient = _baseClient;
+            _configuration = configuration;
         }
 
-        public async Task<MovieCertificationResponse> GetMovieCertifications(string key, string uri)
+        public async Task<MovieCertificationResponse> GetMovieCertifications()
         {
             var client = baseClient.InitializeClient();
-            var action = new Uri(uri + string.Format("certification/movie/list?api_key={0}", key));
+            var action = new Uri(base.baseRequest.BaseURI + string.Format("certification/movie/list?api_key={0}", base.baseRequest.ApiKey));
             var dataObjects = new MovieCertificationResponse();
 
             using (var response = await client.GetAsync(action))
@@ -52,10 +58,10 @@ namespace External.Movie.Client.Services
             return dataObjects;
         }
 
-        public async Task<MovieCertificationResponse> GetTVCertifications(string key, string uri)
+        public async Task<MovieCertificationResponse> GetTVCertifications()
         {
             var client = baseClient.InitializeClient();
-            var action = new Uri(uri + string.Format("certification/tv/list?api_key=", key));
+            var action = new Uri(base.baseRequest.BaseURI + string.Format("certification/tv/list?api_key={0}", base.baseRequest.ApiKey));
             var dataObjects = new MovieCertificationResponse();
 
             using (var response = await client.GetAsync(action))
